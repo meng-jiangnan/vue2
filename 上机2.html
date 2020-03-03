@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js入门练习——留言板</title>
+<link rel="stylesheet" type="text/css" href="css/basic.css" />
+<script type="text/javascript">
+</script>
+</head>
+
+<body>
+	<div class="container">
+  	<textarea v-model="txt" id="txt" maxlength=100 ></textarea>
+    <button id="btn" @click="add">留言</button>
+    <ul id="message">
+    	<li v-for="(temp,i) in txtarr">
+    	<img :src="`img/${temp.img}`" />
+    	<p>{{temp.fname}}</p>
+    	</li>
+    </ul>
+  </div>
+</body>
+<script type="text/javascript" src="js/vue.js" ></script>
+<script>
+	var vm=new Vue({
+		el:".container",
+		fname:"",
+		data:{
+			txtarr:[]
+		},
+		methods:{
+			add(){
+				this.txtarr.splice(0,0,{img:"head.jpg",fname:this.txt});
+			}
+		}
+	})
+</script>
+</html>
